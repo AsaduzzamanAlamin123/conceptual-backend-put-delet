@@ -27,8 +27,10 @@ async function run(){
         // get api to read all note
         // localhost:5000/notes
         app.get('/notes', async(req,res)=>{
+            const query = req.query;
+            console.log(query);
             
-            const cursor = notesCollection.find({})
+            const cursor = notesCollection.find( query )
             const result = await cursor.toArray()
 
             res.send(result);
